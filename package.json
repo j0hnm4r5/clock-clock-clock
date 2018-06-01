@@ -4,5 +4,6 @@
   "description": "The clock used in three.js, except as a standalone.",
   "main": "clock.js",
   "author": "John Mars",
+  "repository": "github:j0hnm4r5/clock-clock-clock",
   "license": "MIT"
 }
