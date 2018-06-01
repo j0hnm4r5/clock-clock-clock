@@ -1,0 +1,8 @@
+{
+  "name": "clock-clock-clock",
+  "version": "1.0.0",
+  "description": "The clock used in three.js, except as a standalone.",
+  "main": "clock.js",
+  "author": "John Mars",
+  "license": "MIT"
+}
