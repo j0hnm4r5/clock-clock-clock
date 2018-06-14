@@ -8,7 +8,7 @@
  * @author Version Maintainer: John Mars <john@m4r5.io>
  */
 
-export default class Clock {
+class Clock {
   constructor(autoStart = true) {
     this.autostart = autoStart;
 
@@ -64,3 +64,5 @@ export default class Clock {
     return diff;
   }
 }
+
+module.exports = { Clock };
