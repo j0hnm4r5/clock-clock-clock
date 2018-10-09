@@ -8,61 +8,59 @@
  * @author Version Maintainer: John Mars <john@m4r5.io>
  */
 
-class Clock {
-  constructor(autoStart = true) {
-    this.autostart = autoStart;
+export default class Clock {
+	constructor(autoStart = true) {
+		this.autostart = autoStart;
 
-    this.startTime = 0;
-    this.oldTime = 0;
-    this.elapsedTime = 0;
+		this.startTime = 0;
+		this.oldTime = 0;
+		this.elapsedTime = 0;
 
-    this.running = false;
-  }
+		this.running = false;
+	}
 
-  start() {
-    this.startTime = (typeof performance === "undefined"
-      ? Date
-      : performance
-    ).now(); // see #10732
+	start() {
+		this.startTime = (typeof performance === `undefined`
+			? Date
+			: performance
+		).now(); // see #10732
 
-    this.oldTime = this.startTime;
-    this.elapsedTime = 0;
-    this.running = true;
-  }
+		this.oldTime = this.startTime;
+		this.elapsedTime = 0;
+		this.running = true;
+	}
 
-  stop() {
-    this.getElapsedTime();
-    this.running = false;
-    this.autoStart = false;
-  }
+	stop() {
+		this.getElapsedTime();
+		this.running = false;
+		this.autoStart = false;
+	}
 
-  getElapsedTime() {
-    this.getDelta();
-    return this.elapsedTime;
-  }
+	getElapsedTime() {
+		this.getDelta();
+		return this.elapsedTime;
+	}
 
-  getDelta() {
-    let diff = 0;
+	getDelta() {
+		let diff = 0;
 
-    if (this.autoStart && !this.running) {
-      this.start();
-      return 0;
-    }
+		if (this.autoStart && !this.running) {
+			this.start();
+			return 0;
+		}
 
-    if (this.running) {
-      const newTime = (typeof performance === "undefined"
-        ? Date
-        : performance
-      ).now();
+		if (this.running) {
+			const newTime = (typeof performance === `undefined`
+				? Date
+				: performance
+			).now();
 
-      diff = (newTime - this.oldTime) / 1000;
-      this.oldTime = newTime;
+			diff = (newTime - this.oldTime) / 1000;
+			this.oldTime = newTime;
 
-      this.elapsedTime += diff;
-    }
+			this.elapsedTime += diff;
+		}
 
-    return diff;
-  }
+		return diff;
+	}
 }
-
-module.exports = { Clock };
